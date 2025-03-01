@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ReelReveal: Cinematic Trivia Challenge
 
 **ReelReveal** is an engaging online movie trivia game designed to test your cinematic knowledge. Guess movie titles based on progressively revealed movie posters and hints. Built with a robust full-stack architecture, ReelReveal offers an interactive and polished user experience.
@@ -32,31 +31,6 @@
     * [API 1 Name and Link (e.g., The Movie Database API)](https://www.themoviedb.org/)
     * [API 2 Name and Link (e.g., OMDB API)](http://www.omdbapi.com/)
 
-## Folder Structure
-
-reelreveal/
-├── client/          # React Frontend
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── App.js
-│   │   └── ...
-│   └── package.json
-├── server/          # Node.js/Express Backend
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── config/
-│   ├── middleware/
-│   ├── database/
-│   ├── .env
-│   ├── server.js
-│   └── package.json
-├── .gitignore
-├── README.md
-└── package.json (root)
 
 ## API Endpoints
 
@@ -138,5 +112,4 @@ API_KEY_2=your_external_api_2_key
 * Incorporate social sharing features.
 * Expand the hint system with audio or video clips.
 * Add more robust error handling and user feedback.
-=======
->>>>>>> 43a50166e6fbb6bdae5eea19b650a943cf5eb345
+

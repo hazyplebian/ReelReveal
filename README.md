@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ReelReveal: Cinematic Trivia Challenge
 
 **ReelReveal** is an engaging online movie trivia game designed to test your cinematic knowledge. Guess movie titles based on progressively revealed movie posters and hints. Built with a robust full-stack architecture, ReelReveal offers an interactive and polished user experience.
@@ -137,3 +138,17 @@ API_KEY_2=your_external_api_2_key
 * Incorporate social sharing features.
 * Expand the hint system with audio or video clips.
 * Add more robust error handling and user feedback.
+=======
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+>>>>>>> 43a50166e6fbb6bdae5eea19b650a943cf5eb345

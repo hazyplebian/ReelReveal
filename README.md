@@ -25,12 +25,14 @@
     * Sequelize ORM
     * JSON Web Tokens (JWT)
     * Environment Variables (.env)
+      
 * **Deployment:**
+  
     * Render (with PostgreSQL database)
+      
 * **External APIs:**
     * [API 1 Name and Link (e.g., The Movie Database API)](https://www.themoviedb.org/)
     * [API 2 Name and Link (e.g., OMDB API)](http://www.omdbapi.com/)
-
 
 ## API Endpoints
 
@@ -112,4 +114,7 @@ API_KEY_2=your_external_api_2_key
 * Incorporate social sharing features.
 * Expand the hint system with audio or video clips.
 * Add more robust error handling and user feedback.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8be3fde7593e945460d5ad22dc7bef4f0391fbdb

@@ -25,37 +25,14 @@
     * Sequelize ORM
     * JSON Web Tokens (JWT)
     * Environment Variables (.env)
+      
 * **Deployment:**
+  
     * Render (with PostgreSQL database)
+      
 * **External APIs:**
     * [API 1 Name and Link (e.g., The Movie Database API)](https://www.themoviedb.org/)
     * [API 2 Name and Link (e.g., OMDB API)](http://www.omdbapi.com/)
-
-## Folder Structure
-
-reelreveal/
-├── client/          # React Frontend
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── App.js
-│   │   └── ...
-│   └── package.json
-├── server/          # Node.js/Express Backend
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── config/
-│   ├── middleware/
-│   ├── database/
-│   ├── .env
-│   ├── server.js
-│   └── package.json
-├── .gitignore
-├── README.md
-└── package.json (root)
 
 ## API Endpoints
 

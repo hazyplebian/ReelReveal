@@ -45,6 +45,16 @@
 
 To run the application locally, create a `.env` file in the `server/` directory with the following variables:
 
+
+**DATABASE_URL=your_postgresql_connection_string**
+
+**JWT_SECRET=your_secret_jwt_key**
+
+**API_KEY_1=your_external_api_1_key**
+
+**API_KEY_2=your_external_api_2_key**
+
+
 ## Running Locally
 
 1.  **Clone the repository:**

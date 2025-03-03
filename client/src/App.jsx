@@ -1,6 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css'
+import './App.css';
+import connectDB from './database';
+import Movie from './models/Movie';
+import User from './models/User';
+
+// Example: Create a new movie question
+const newMovie = new Movie({
+  question: 'What is the capital of France?',
+  options: ['London', 'Paris', 'Berlin', 'Rome'],
+  correctAnswer: 'Paris',
+});
+
+await newMovie.save();
+
+connectDB(); // Connect to the database
+
 
 function App() {
   const [question, setQuestion] = useState(null);

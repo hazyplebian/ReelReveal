@@ -1,16 +1,21 @@
-import express from "express";
-import mongoose from "mongoose";
-import config from "./config/connection.js";
+const forceDatabaseRefresh = false;  // Flag to control whether to force a database refresh on server start
 
-const app = express();
+import express from 'express';
+import sequelize from './config/connection.js'; // Import the initialized Sequelize instance
+import routes from './routes/index.js';  // Import the routes for handling different endpoints
 
-mongoose.connect(config.mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => console.log("MongoDB connected"))
-.catch((err) => console.error("MongoDB connection error:", err));
+const app = express();  // Create an Express application
+const PORT = process.env.PORT || 3001;
 
-app.listen(config.port, () => {
-    console.log(`Server running on port ${config.port}`);
+// Serves static files from the client's dist folder, typically for a built React application
+app.use(express.static('../client/dist'));
+
+app.use(express.json());  // Middleware to parse JSON request bodies
+app.use(routes);  // Use the imported routes for handling API endpoints
+
+// Sync the Sequelize models with the database
+sequelize.sync({ force: forceDatabaseRefresh }).then(() => {
+  app.listen(PORT, () => {  // Start the server and listen on the defined port
+    console.log(`Server is listening on port ${PORT}`);  // Log a message when the server starts
+  });
 });

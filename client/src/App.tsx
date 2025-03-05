@@ -1,7 +1,5 @@
 import './App.css';
-import { Sequelize } from 'sequelize';
-import * as dotenv from 'dotenv';
-dotenv.config();
+import { Outlet } from 'react-router-dom';
 
 const sequelize = new Sequelize(process.env.DATABASE_URL!, {
   dialect: 'postgres',
@@ -36,6 +34,7 @@ function App() {
   return (
     <div className="app">
       <h1>ReelReveal</h1>
+      <Outlet/>
     </div>
   );
 }

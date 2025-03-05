@@ -4,11 +4,12 @@ import User from "./User";
 import Movie from "./Movie";
 
 interface UserGuessesAttributes {
-  id: number;
+  id?: number;
   user_id: number;
   movie_id: number;
   is_correct: boolean;
 }
+
 
 class UserGuesses
   extends Model<UserGuessesAttributes>

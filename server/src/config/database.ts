@@ -8,10 +8,9 @@ const sequelize = new Sequelize(
   process.env.DB_USER as string,
   process.env.DB_PASSWORD as string,
   {
-    host: process.env.DB_HOST,
+    host: process.env.DB_HOST || "localhost",  // Fallback if undefined
     dialect: "postgres",
     logging: false,
   }
 );
-
 export default sequelize;

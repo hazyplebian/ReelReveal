@@ -1,5 +1,5 @@
-import sequelize from '../config/connection';
-import {LeaderboardSystem} from './leaderboard'; 
+import {LeaderboardSystem} from './leaderboard.js'; 
+import sequelize from '../config/connection.js';
 
 const Leaderboard = LeaderboardSystem(sequelize);
 

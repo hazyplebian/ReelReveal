@@ -37,7 +37,7 @@ const PlayerPerformance = sequelize.define<PlayerPerformanceInstance>('PlayerPer
     allowNull: false,
   },
   winStreak: {
-    type: DataTypes.INTEGER,
+  type: DataTypes.INTEGER,
     allowNull: false,
   },
   score: {

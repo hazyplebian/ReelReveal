@@ -25,7 +25,6 @@ const leaderboard = require('./models/leaderboard');
 
 async function main() {
     await leaderboard.syncDatabase();
-    // Your application logic using the leaderboard system
     const leaderboardData = await leaderboard.getLeaderboard();
     console.log(leaderboardData);
 }

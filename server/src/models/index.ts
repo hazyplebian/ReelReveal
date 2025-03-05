@@ -1,5 +1,6 @@
-export * from './user';
-export * from './leaderboard';
-export * from './game';
-export * from './score';
-export * from './player';
+import sequelize from '../config/connection';
+import {LeaderboardSystem} from './leaderboard'; 
+
+const Leaderboard = LeaderboardSystem(sequelize);
+
+export {Leaderboard};

@@ -87,49 +87,61 @@ const ReelReveal: React.FC = () => {
     <div className="flex justify-center items-center min-h-screen bg-black text-white">
       <Card className="p-6 w-[600px] text-center">
         <CardContent>
-          <p className="text-lg font-bold">MOVIE POSTER</p>
-          <img
-            src={currentMovie?.poster}
-            alt="Movie Poster"
-            className={`w-full h-80 object-cover mb-4 ${revealed ? "" : "blur-md"}`}
-          />
-          <p className="text-lg">WIN STREAK: {winStreak}</p>
-          {!revealed ? (
-            <p>Guess Attempt: {guessAttempt}/6</p>
-          ) : (null)
-          }
-          
-          {/* Input for user guess, shown only if answer is not revealed */}
-          {!revealed && (
-            <input
-              type="text"
-              value={guess}
-              onChange={(e) => setGuess(e.target.value)}
-              className="p-2 text-black w-full rounded-md my-2"
-              placeholder="What is the movie title?"
+        <div
+         style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          gap: "25px",
+          }}>
+          <div className="flex-inline">
+            <p className="text-lg font-bold">MOVIE POSTER</p>
+            <img
+              src={currentMovie?.poster}
+              alt="Movie Poster"
+              className={`w-full h-80 object-cover mb-4 ${revealed ? "" : "blur-md"}`}
             />
-          )}
+            <p className="text-lg">WIN STREAK: {winStreak}</p>
+          </div>  
+          <div className="flex-inline">
+            {!revealed ? (
+              <p>Guess Attempt: {guessAttempt}/6</p>
+            ) : (null)
+            }
           
-          {/* Submit button for guessing */}
-          {!revealed && <Button onClick={handleGuess}>Submit</Button>}
           
-          {/* Display the result if the answer is revealed */}
-          {/* {revealed && ( */}
-            <div className="mt-4">
-              <p className={`text-xl font-bold ${guess.toLowerCase() === currentMovie?.title.toLowerCase() ? "text-green-500" : "text-red-500"}`}>
-                {guess.toLowerCase() === currentMovie?.title.toLowerCase() ? "YOU ARE CORRECT" : "YOU ARE INCORRECT"}
-              </p>
-              <p className="text-xl font-bold">{revealed ? currentMovie?.title : '***'}</p>
-              <p><strong>Year:</strong> {revealed || guessAttempt > 0 ? currentMovie?.year : '***'}</p>
-              <p><strong>Genre:</strong> {revealed || guessAttempt > 1 ? currentMovie?.genre : '***'}</p>
-              <p><strong>Director:</strong> {revealed || guessAttempt > 2 ? currentMovie?.director : '***'}</p>
-              <p><strong>Actors:</strong> {revealed || guessAttempt > 3 ? currentMovie?.actors : '***'}</p>
-              <p className="text-sm mt-2">{revealed || guessAttempt > 4 ? currentMovie?.description : '***'}</p>
-              
-              {/* Button to proceed to the next movie */}
-              <Button className="mt-4" onClick={handleNextMovie}>Next Movie</Button>
+            {/* Input for user guess, shown only if answer is not revealed */}
+            {!revealed && (
+              <input
+                type="text"
+                value={guess}
+                onChange={(e) => setGuess(e.target.value)}
+                className="p-2 text-black w-full rounded-md my-2"
+                placeholder="What is the movie title?"
+              />
+            )}
+            
+            {/* Submit button for guessing */}
+            {!revealed && <Button onClick={handleGuess}>Submit</Button>}
+            
+            {/* Display the result if the answer is revealed */}
+            {/* {revealed && ( */}
+              <div className="mt-4">
+                <p className={`text-xl font-bold ${guess.toLowerCase() === currentMovie?.title.toLowerCase() ? "text-green-500" : "text-red-500"}`}>
+                  {guess.toLowerCase() === currentMovie?.title.toLowerCase() ? "YOU ARE CORRECT" : "YOU ARE INCORRECT"}
+                </p>
+                <p className="text-xl font-bold">{revealed ? currentMovie?.title : '***'}</p>
+                <p><strong>Year:</strong> {revealed || guessAttempt > 0 ? currentMovie?.year : '***'}</p>
+                <p><strong>Genre:</strong> {revealed || guessAttempt > 1 ? currentMovie?.genre : '***'}</p>
+                <p><strong>Director:</strong> {revealed || guessAttempt > 2 ? currentMovie?.director : '***'}</p>
+                <p><strong>Actors:</strong> {revealed || guessAttempt > 3 ? currentMovie?.actors : '***'}</p>
+                <p className="text-sm mt-2">{revealed ||guessAttempt > 4 ? currentMovie?.description : '***'}</p>
+                
+                {/* Button to proceed to the next movie */}
+                <Button className="mt-4" onClick={handleNextMovie}>Next Movie</Button>
             </div>
-          
+          </div>  
+        </div>  
         </CardContent>
       </Card>
     </div>

@@ -4,7 +4,7 @@ import './index.css';
 import Home from './pages/Home.tsx';
 import Login from './pages/Login.tsx';
 import ErrorPage from './pages/ErrorPage.tsx';
-import GamePage from './pages/Game.tsx';
+
 import App from './App.tsx';
 
 const router = createBrowserRouter([
@@ -20,10 +20,6 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />
-      }, 
-      {
-        path: '/game',
-        element: <GamePage />
       }, 
     ]
   }

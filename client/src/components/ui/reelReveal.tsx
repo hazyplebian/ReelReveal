@@ -21,7 +21,7 @@ const ReelReveal: React.FC = () => {
   const [guess, setGuess] = useState<string>(""); // User's current guess
   const [revealed, setRevealed] = useState<boolean>(false); // Indicates whether the answer is revealed
   const [currentMovie, setCurrentMovie] = useState<Movie | null>(null); // Stores the current movie to guess
-  const [guessAttempt, setGuessAttempt] = useState<number>(1); // Tracks the number of guess attempts
+  const [guessAttempt, setGuessAttempt] = useState<number>(0); // Tracks the number of guess attempts
 
   // Fetch movies from an API on component mount
   const TOTAL_PAGES = 500; // TMDB API allows up to 500 pages for some endpoints
@@ -40,7 +40,7 @@ const ReelReveal: React.FC = () => {
       }
   
       const randomMovie = data.results[Math.floor(Math.random() * data.results.length)];
-      const creditsResponse = await fetch( `https://api.themoviedb.org/3/movie/${randomMovie.id}/credits?api_key=${API_KEY}` );
+      const creditsResponse = await fetch( `https://api.themoviedb.org/3/movie/${randomMovie.id}/credits?api_key=${import.meta.env.VITE_API_KEY}` );
       const creditsData = await creditsResponse.json();
 
       setRevealed(false);
@@ -70,11 +70,13 @@ const ReelReveal: React.FC = () => {
     const isCorrect = guess.toLowerCase() === currentMovie?.title.toLowerCase(); // Compare guesses case-insensitively
       if (isCorrect) {
     setRevealed(true);
-    setWinStreak(isCorrect ? winStreak + 1 : 0); // Increase streak if correct, reset if wrong
+    setWinStreak(isCorrect ? winStreak + 1 : 0);
+    setGuessAttempt(0) // Increase streak if correct, reset if wrong
     } else {
-      if (guessAttempt === 6) {
+      if (guessAttempt === 5) {
     setRevealed(true)
-    setWinStreak(isCorrect ? winStreak + 1 : 0); // Increase streak if correct, reset if wrong
+    setWinStreak(isCorrect ? winStreak + 1 : 0);
+    setGuessAttempt(0) // Increase streak if correct, reset if wrong
     } else {
     setGuessAttempt(guessAttempt + 1);
   } 
@@ -92,7 +94,10 @@ const ReelReveal: React.FC = () => {
             className={`w-full h-80 object-cover mb-4 ${revealed ? "" : "blur-md"}`}
           />
           <p className="text-lg">WIN STREAK: {winStreak}</p>
-          <p>Guess Attempt: {guessAttempt}/6</p>
+          {!revealed ? (
+            <p>Guess Attempt: {guessAttempt}/6</p>
+          ) : (null)
+          }
           
           {/* Input for user guess, shown only if answer is not revealed */}
           {!revealed && (
@@ -115,11 +120,11 @@ const ReelReveal: React.FC = () => {
                 {guess.toLowerCase() === currentMovie?.title.toLowerCase() ? "YOU ARE CORRECT" : "YOU ARE INCORRECT"}
               </p>
               <p className="text-xl font-bold">{revealed ? currentMovie?.title : '***'}</p>
-              <p><strong>Year:</strong> {guessAttempt > 1 ? currentMovie?.year : '***'}</p>
-              <p><strong>Genre:</strong> {guessAttempt > 2 ? currentMovie?.genre : '***'}</p>
-              <p><strong>Director:</strong> {guessAttempt > 3 ? currentMovie?.director : '***'}</p>
-              <p><strong>Actors:</strong> {guessAttempt > 4 ? currentMovie?.actors : '***'}</p>
-              <p className="text-sm mt-2">{guessAttempt > 5 ? currentMovie?.description : '***'}</p>
+              <p><strong>Year:</strong> {revealed || guessAttempt > 0 ? currentMovie?.year : '***'}</p>
+              <p><strong>Genre:</strong> {revealed || guessAttempt > 1 ? currentMovie?.genre : '***'}</p>
+              <p><strong>Director:</strong> {revealed || guessAttempt > 2 ? currentMovie?.director : '***'}</p>
+              <p><strong>Actors:</strong> {revealed || guessAttempt > 3 ? currentMovie?.actors : '***'}</p>
+              <p className="text-sm mt-2">{revealed || guessAttempt > 4 ? currentMovie?.description : '***'}</p>
               
               {/* Button to proceed to the next movie */}
               <Button className="mt-4" onClick={handleNextMovie}>Next Movie</Button>

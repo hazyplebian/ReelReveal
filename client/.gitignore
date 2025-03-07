@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+path/to/your/file.js
+path/to/your/file.js
+
+.env

@@ -53,6 +53,10 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.blur-md {
+  filter: blur(20px); /* Adjust the blur amount as needed */
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {

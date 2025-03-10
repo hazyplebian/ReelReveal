@@ -9,7 +9,7 @@ interface CardProps {
 export const Card: React.FC<CardProps> = ({ children, className = "" }) => {
   return (
     // Combines default styles with optional className for customization.
-    <div className={`bg-gray-800 p-4 rounded-2xl shadow-lg ${className}`}>
+    <div className={`${className}`}>
       {children}
     </div>
   );

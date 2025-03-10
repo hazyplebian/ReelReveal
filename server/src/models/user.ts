@@ -1,43 +1,74 @@
-import { DataTypes, Model } from "sequelize";
-import sequelize from "../config/database";
+import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
+import bcrypt from 'bcrypt';
 
-class User extends Model {
-  public id!: number;
-  public username!: string;
-  public email!: string;
-  public password!: string;
+interface UserAttributes {
+  id: number;
+  username: string;
+  password: string;
+  streak: number;
+  wins: number;
 }
 
-User.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
+interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
+
+export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
+  public id!: number;
+  public username!: string;
+  public password!: string;
+  public streak!: number;
+  public wins!: number;
+
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
+
+  public async setPassword(password: string) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(password, saltRounds);
+  }
+}
+
+export function UserFactory(sequelize: Sequelize): typeof User {
+  User.init(
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      streak: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      wins: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  },
-  {
-    sequelize,
-    modelName: "User",
-    tableName: "users",
-  }
-);
+    {
+      tableName: 'users',  // Name of the table in PostgreSQL
+      sequelize,            // The Sequelize instance that connects to PostgreSQL
+      hooks: {
+        // Before creating a new user, hash and set the password
+        beforeCreate: async (user: User) => {
+          await user.setPassword(user.password);
+        },
+        // Before updating a user, hash and set the new password if it has changed
+        beforeUpdate: async (user: User) => {
+          if (user.changed('password')) {
+            await user.setPassword(user.password);
+          }
+        },
+      }
+    }
+  );
 
-export default User;
+  return User
+}

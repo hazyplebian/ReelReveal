@@ -2,7 +2,7 @@ import { useState, FormEvent, ChangeEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import auth from '../utils/auth';
 import { login, register } from "../api/authAPI";
-import { UserLogin } from "../interfaces/UserLogin";  // Import the interface for UserLogin
+
 const Login = () => {
   const [loginData, setLoginData] = useState({
     username: '',

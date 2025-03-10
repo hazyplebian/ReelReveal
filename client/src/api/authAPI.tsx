@@ -23,4 +23,27 @@ const login = async (userInfo: UserLogin) => {
   }
 };
 
-export { login };
+const register = async (userInfo: UserLogin) => {
+  try {
+    const response = await fetch('/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userInfo),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error('User info could not be retrieved, check the network tab!');
+    }
+
+    return data;
+  } catch (err) {
+    console.log('Error from user login: ', err);
+    return Promise.reject('Could not fetch user info');
+  }
+};
+
+export { login, register };

@@ -93,6 +93,7 @@ const ReelReveal: React.FC = () => {
             alt="Movie Poster"
             className={`w-full h-80 object-cover mb-4 ${revealed ? "" : "blur-md"}`}
           />
+
           <p className="text-lg">WIN STREAK: {winStreak}</p>
           {!revealed ? (
             <p>Guess Attempt: {guessAttempt}/6</p>

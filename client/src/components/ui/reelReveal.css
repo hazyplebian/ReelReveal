@@ -1,0 +1,13 @@
+.image-text-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .movie-poster-side {
+    max-width: 200px; /* Adjust as needed */
+    margin-right: 20px; /* Adjust as needed */
+  }
+  
+  .text-side {
+    flex: 1;
+  }

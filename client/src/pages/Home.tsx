@@ -1,10 +1,8 @@
 import { useState, useLayoutEffect } from "react";
-import ErrorPage from "./ErrorPage";
 import auth from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const [error, setError] = useState(false);
   const [loginCheck, setLoginCheck] = useState(false);
   const navigate = useNavigate();
   const handleLoginClick = () => {
@@ -27,10 +25,6 @@ const Home = () => {
       setLoginCheck(true);
     }
   };
-
-  if (error) {
-    return <ErrorPage />;
-  }
 
   return (
     <div className="bebas-neue-regular">

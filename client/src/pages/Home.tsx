@@ -1,12 +1,9 @@
-import { useState, useEffect, useLayoutEffect } from "react";
-import { retrieveUsers } from "../api/userAPI";
-import type { UserData } from "../interfaces/UserData";
+import { useState, useLayoutEffect } from "react";
 import ErrorPage from "./ErrorPage";
 import auth from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const [users, setUsers] = useState<UserData[]>([]);
   const [error, setError] = useState(false);
   const [loginCheck, setLoginCheck] = useState(false);
   const navigate = useNavigate();
@@ -16,11 +13,10 @@ const Home = () => {
   const handleGameClick = () => {
     navigate("/game");
   };
-  useEffect(() => {
-    if (loginCheck) {
-      fetchUsers();
-    }
-  }, [loginCheck]);
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Clear the JWT token
+    window.location.href = "/";
+  };
 
   useLayoutEffect(() => {
     checkLogin();
@@ -32,35 +28,26 @@ const Home = () => {
     }
   };
 
-  const fetchUsers = async () => {
-    try {
-      const data = await retrieveUsers();
-      setUsers(data);
-    } catch (err) {
-      console.error("Failed to retrieve tickets:", err);
-      setError(true);
-    }
-  };
-
   if (error) {
     return <ErrorPage />;
   }
 
   return (
-    <>
+    <div className="bebas-neue-regular">
+      <h1 className="font-weight-bold text-light mb-5">ReelReveal</h1>
       {!loginCheck ? (
         <div>
-          <button onClick={handleGameClick}>Play as Guest</button>
+          <button className="btn mr-3" onClick={handleGameClick}>Play as Guest</button>
 
-          <button onClick={handleLoginClick}>Login to Play</button>
+          <button className="btn" onClick={handleLoginClick}>Login to Play</button>
         </div>
       ) : (
         <div>
-          <button onClick={handleGameClick}>Play Game!</button>
-          <button>Log Out</button>
+          <button className="btn mr-3" onClick={handleGameClick}>Play Game</button>
+          <button className="btn" onClick={handleLogout}>Log Out</button>
         </div>
       )}
-    </>
+    </div>
   );
 };
 export default Home;

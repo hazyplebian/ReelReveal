@@ -1,7 +1,7 @@
 import { useState, FormEvent, ChangeEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import auth from '../utils/auth';
-import { login } from "../api/authAPI";
+import { login, register } from "../api/authAPI";
 import { UserLogin } from "../interfaces/UserLogin";  // Import the interface for UserLogin
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -49,7 +49,7 @@ const Login = () => {
   const handleRegisterSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const data = await login(loginData);
+      const data = await register(registerData);
       auth.login(data.token);
     } catch (err) {
       setErrorData('Failed to Register: ' + err);
@@ -57,13 +57,13 @@ const Login = () => {
   };
 
   return (
-    <div className="bebas-neue-regular">
+    <div>
     <div className="d-flex flex-row">
     <div className="mr-5">
-      <h1 className="font-weight-bold text-light mb-3 text-left">Login</h1>
+      <h1 className="font-weight-bold text-light mb-3 text-left bebas-neue-regular">Login</h1>
       <form onSubmit={handleLoginSubmit}>
         <div className="form-group text-left">
-          <label className="text-light">Username</label>
+          <label className="text-light bebas-neue-regular">Username</label>
           <input 
             type='text'
             name='username'
@@ -74,7 +74,7 @@ const Login = () => {
           />
         </div>
         <div className="form-group text-left">
-          <label className="text-light">Password</label>
+          <label className="text-light bebas-neue-regular">Password</label>
           <input 
             type='password'
             name='password'
@@ -84,17 +84,17 @@ const Login = () => {
             onChange={handleLoginChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary bebas-neue-regular">Submit</button>
       </form>
     </div>
     <div className="mr-5 d-flex justify-content-center align-items-center">
-      <h3 className="text-light font-weight-bold">OR</h3>
+      <h3 className="text-light font-weight-bold bebas-neue-regular">OR</h3>
     </div>
     <div>
-      <h1 className="font-weight-bold text-light mb-3 text-left">Register</h1>
+      <h1 className="font-weight-bold text-light mb-3 text-left bebas-neue-regular">Register</h1>
       <form onSubmit={handleRegisterSubmit}>
         <div className="form-group text-left">
-          <label className="text-light">Username</label>
+          <label className="text-light bebas-neue-regular">Username</label>
           <input 
             type='text'
             name='username'
@@ -105,7 +105,7 @@ const Login = () => {
           />
         </div>
         <div className="form-group text-left">
-          <label className="text-light">Password</label>
+          <label className="text-light bebas-neue-regular">Password</label>
           <input 
             type='password'
             name='password'
@@ -115,7 +115,7 @@ const Login = () => {
             onChange={handleRegisterChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary bebas-neue-regular">Submit</button>
       </form>
     </div>
     </div>

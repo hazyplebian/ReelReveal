@@ -121,7 +121,7 @@ To run the application locally, create a `.env` file in the `server/` directory 
 * Expand the hint system with audio or video clips.
 * Add more robust error handling and user feedback.
 
-* Resources/Sources
+*## **Resources/Sources**
 * TMDB API for the movie poster database,
 * Chat GTP and Copilot for assistance with errors and some coding,
 * Bootcamp TA Andrea Presto and Quentin Jones, and

@@ -33,3 +33,4 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     res.sendStatus(401); // Send unauthorized status if no authorization header is present
   }
 };
+

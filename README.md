@@ -28,7 +28,8 @@
       
 * **Deployment:**
   
-    * Render (with PostgreSQL database)
+    * Render (with PostgreSQL database):  https://reelreveal.onrender.com
+    * https://github.com/hazyplebian/ReelReveal
       
 * **External APIs:**
     * [API 1 Name and Link (e.g., The Movie Database API)](https://www.themoviedb.org/)
@@ -119,3 +120,9 @@ To run the application locally, create a `.env` file in the `server/` directory 
 * Incorporate social sharing features.
 * Expand the hint system with audio or video clips.
 * Add more robust error handling and user feedback.
+
+* Resources/Sources
+* TMDB API for the movie poster database,
+* Chat GTP and Copilot for assistance with errors and some coding,
+* Bootcamp TA Andrea Presto and Quentin Jones, and
+* previous Bootcamp exercises were used for guidance.

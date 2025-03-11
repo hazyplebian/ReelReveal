@@ -28,6 +28,8 @@ const Home = () => {
 
   return (
     <div className="bebas-neue-regular">
+        <div className="has-background">
+            </div>
       <h1 className="font-weight-bold text-light mb-5">ReelReveal</h1>
       {!loginCheck ? (
         <div>
